@@ -1,0 +1,27 @@
+## Gas Detection Code 
+    #define a_p 2
+    #define d_p 4
+    #define b_p 32
+    int digital_value;
+    int analog_value;        
+    void setup() {
+    Serial.begin(9600);  
+    pinMode(d_p, INPUT);
+    pinMode(a_p,INPUT);
+    pinMode(b_p,OUTPUT); 
+    }
+    void loop()
+    {
+    analog_value= analogRead(a_p); 
+    Serial.println(analog_value);
+    digital_value = digitalRead(d_p); 
+    if (analog_value>1000){
+      digitalWrite(b_p, 20);
+      Serial.println("GAS!!");
+    }
+    else{
+      digitalWrite(b_p, LOW);
+      Serial.println("NO GAS");
+    }
+    delay(1000); 
+    } 
